@@ -15,7 +15,7 @@
 --------------------------------------------------------------
 | Association            |
 | has_many :items        |
-| has_many :purchase     |
+| has_many :purchases    |
 
 
 
@@ -48,7 +48,7 @@
 | Association            |
 | has_one :delivery      |
 | belongs_to :user       |
-| belongs_to :items      |
+| belongs_to :item       |
 
 
 ## deliverys テーブル
@@ -61,6 +61,7 @@
 | address          | string     | null: false                   |
 | building_name    | string     |                               |
 | telephone_number | string     | null: false                   |
+| purchases        | references | null: false, foreign_key: true|
 ------------------------------------------------------------------
 | Association            |
 | belongs_to :purchase   |
