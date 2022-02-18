@@ -42,31 +42,31 @@ RSpec.describe Item, type: :model do
       it "category_idが空では登録できない" do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category 項目に「---」以外を選択してください")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
   
       it "condition_idが空では登録できない" do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition 項目に「---」以外を選択してください")
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
       it "delivery_charge_idが空では登録できない" do
         @item.delivery_charge_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery charge 項目に「---」以外を選択してください")
+        expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
       end
 
       it "prefecture_idが空では登録できない" do
         @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture 項目に「---」以外を選択してください")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it "days_to_ship_idが空では登録できない" do
         @item.days_to_ship_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship 項目に「---」以外を選択してください")
+        expect(@item.errors.full_messages).to include("Days to ship can't be blank")
       end
 
       it "category_idが「---」では登録できない" do
