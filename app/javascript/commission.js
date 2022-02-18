@@ -5,7 +5,7 @@ function count (){
     const commissionNum  = document.getElementById("add-tax-price");
     commissionNum.innerHTML =  countVal
 
-    const profitVal = price.value - countVal
+    const profitVal = Math.floor(price.value - countVal)
     const profitNum  = document.getElementById("profit");
     profitNum.innerHTML =  profitVal
   });
