@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :move_to_signed_in, only: [:edit]
+
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -23,6 +25,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    
     unless user_signed_in? && @item.user_id == current_user.id
       redirect_to root_path
     end
@@ -48,5 +51,13 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :product_name, :description, :price, :category_id, :condition_id, :delivery_charge_id,
                                  :prefecture_id, :days_to_ship_id).merge(user_id: current_user.id)
-  end
+    end
+
+
+   def move_to_signed_in
+    unless user_signed_in?    
+      redirect_to  user_session_path
+    end
+  end    
+                         
 end
