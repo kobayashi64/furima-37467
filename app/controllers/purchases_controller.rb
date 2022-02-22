@@ -5,7 +5,10 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @purchase_delivery = PurchaseDelivery.new
 
-    redirect_to root_path if @item.purchase.present?
+    if @item.purchase.present?
+      redirect_to root_path 
+      return
+    end
 
     redirect_to root_path if current_user.id == @item.user_id
   end
