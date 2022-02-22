@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
   before_action :move_to_signed_in, only: [:index]
+  before_action :set_item, only:[:index,:create]
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_delivery = PurchaseDelivery.new
 
     if @item.purchase.present?
@@ -14,7 +14,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_delivery = PurchaseDelivery.new(purchase_params)
 
     if @purchase_delivery.valid?
@@ -35,7 +34,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_signed_in
-    redirect_to root_path unless user_signed_in?
+    redirect_to user_session_path unless user_signed_in?
   end
 
   def pay_itmem
@@ -45,5 +44,9 @@ class PurchasesController < ApplicationController
       card: @purchase_delivery.token,
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
