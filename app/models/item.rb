@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one :purchase
   has_one_attached :image
 
   with_options numericality: { other_than: 1, message: '項目に「---」以外を選択してください' } do
